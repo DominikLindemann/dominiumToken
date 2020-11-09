@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Receive</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="remove-circle" (click)="decrement()" item-right></ion-icon>
+          <ion-input type="number" min="1" [value]="amount" [(ngModel)]="amount"></ion-input>
+          <ion-icon name="add-circle" (click)="increment()" item-right></ion-icon>
+      </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-button color="dark" (click)="onGenerate()">Generate</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col>
+        <div class="text-center" id="ethereum-qr-code"></div> 
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center *ngIf="address">
+      <ion-col color="dark">address: {{address}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="dark" (click)="onCopy()">copy address</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

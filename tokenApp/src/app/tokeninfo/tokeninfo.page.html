@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tokeninfo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br/>
+  <ion-list *ngIf="errorGetData" no-lines>
+    <ion-item color="danger" class="errorItem">
+      <ion-label>Failed to get data.</ion-label>
+      <ion-button color="dark" (click)="onRefresh()">Refresh</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-grid *ngIf="isLoaded else loading">
+    <ion-row>
+      <ion-col size="4">Name</ion-col>
+      <ion-col>{{token.tokenName }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">Symbol</ion-col>
+      <ion-col>{{token.tokenSymbol }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">Standard</ion-col>
+      <ion-col>{{token.tokenStandard }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">PriceEth</ion-col>
+      <ion-col>{{token.tokenPriceEth }}</ion-col>
+    </ion-row>    
+    <ion-row>
+      <ion-col size="4">Network</ion-col>
+      <ion-col>{{network}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        Address
+        <button mat-icon-button (click)="onCopy()">
+          <ion-icon name="copy-outline"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col class="contractAddress">
+        <a href="{{txLink}}">{{contractAddress}}</a>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>{{token.meaningDE }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>{{token.meaningEN }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ng-template #loading>
+      <app-spinner></app-spinner>
+  </ng-template>
+</ion-content>

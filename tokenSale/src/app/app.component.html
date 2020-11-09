@@ -1,0 +1,70 @@
+<div *ngIf='isLoaded; else loading'>
+  <div *ngIf='!isBuying; else buying'>
+    <h2><img src="../assets/token.png" class="image"/> ICO Sale <img src="../assets/token.png" class="image"/></h2>
+    <h2>{{tokenName}} "{{tokenSymbol}}"</h2>
+    <div *ngIf='!showError; else showErrorTemplate'>
+      <div class="priceText">Token price is <span class="priceValue">{{tokenSale.tokenPrice}}</span> ETH.</div>
+      <div>&nbsp;</div>
+      <div class="flex-container">
+        <div class="flex-item">
+          <div class="balanceTest">Your <br/> Balance:</div>
+        </div>
+        <div class="flex-item">
+          <div class="ethBalance">ETH:</div>
+          <div class="domBalance">{{token.tokenSymbol}}: </div>
+        </div>
+        <div class="flex-item">
+          <div class="ethBalance">{{accountEth}} </div>
+          <div class="domBalance">{{token.balanceToken}} </div>
+        </div>
+      </div>
+      <div>&nbsp;</div>
+      <div *ngIf='tokenSaleTokens > 0; else saleEnded'>
+        <mat-form-field class="tokenToBuy-field">
+          <input matInput type="number" [(ngModel)]="tokenToBuy">
+        </mat-form-field>&nbsp;&nbsp;
+        <button mat-raised-button color="primary" (click)="onBuyClick()">Buy</button>
+        <div>&nbsp;</div>
+        <mat-progress-bar min="1" mode="determinate" [value]="progressPercent"> </mat-progress-bar>
+        <div>&nbsp;</div>
+        <div class="soldText"> {{tokenSale.tokensSold}} / {{tokenSale.tokensAvailable}} tokens sold</div>
+        <div class="error" *ngIf="errorBuyText">{{errorBuyText}}</div>
+      </div>
+      <div class="addressText"> Your account address:</div>
+      <div class="address">{{ account }}</div>
+    </div>
+
+    <div class="networkInfo">NOTICE: This token sale uses the Rinkeby Test Network with fake ether.
+      Use a browser extension like Metamask to connect to the test network and participate in the ICO.
+      Please be patient if the test nework runs slowly.
+    </div>
+    <div class="poweredBy">powered by: <a href="http://munichconsultants.tech/" target="_blank">http://munichconsultants.tech/</a></div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <!-- <app-loading-spinner></app-loading-spinner> -->
+  <div class="loading">loading .... </div>
+</ng-template>
+
+<ng-template #buying>
+  <!-- <app-loading-spinner></app-loading-spinner> -->
+  <div class="buying">buying .... </div>
+  <div class="buying">see metamask window .... </div>
+</ng-template>
+
+
+<ng-template #saleEnded>
+  <div class="ended">sale ended</div>
+</ng-template>
+
+<ng-template #showErrorTemplate>
+  <div class="errorBody">
+    <div class="error">something went wrong </div>
+    <div class="errorDetail"> {{errorMessage}}</div>
+    <div>&nbsp;</div>
+    <button *ngIf="errorButtonNr === 1" mat-raised-button color="primary" (click)="onInstall()">Install Metamask</button>
+    <button *ngIf="errorButtonNr === 2" mat-raised-button color="primary" (click)="onConnect()">Connect Metamask</button>
+    <button *ngIf="errorButtonNr === 3" mat-raised-button color="primary" (click)="onRefresh()">Refresh</button>
+  </div>
+</ng-template>

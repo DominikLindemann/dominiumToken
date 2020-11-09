@@ -1,0 +1,26 @@
+<ion-grid 
+  style="height: 100%; display: flex; flex-flow: column;" >
+  <ion-row>
+    <ion-col>
+      Date: {{transaction.timeStamp | date:'dd.MM.yyyy' }}
+    </ion-col>
+    <ion-col class="ion-text-right">
+      {{transaction.sign}} {{transaction.value }} {{transaction.tokenSymbol}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="txText">
+      Tx: <a href="{{transaction.getUrl()}}">{{transaction.hash}}</a>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="small">
+      From: {{transaction.from}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="small">
+      To: {{transaction.to}}
+    </ion-col>
+  </ion-row>
+</ion-grid>

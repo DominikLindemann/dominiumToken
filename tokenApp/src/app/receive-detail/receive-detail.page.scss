@@ -1,0 +1,16 @@
+ion-col {
+    text-align: center;
+}
+
+ion-input{
+    border: 2px solid var(--ion-color-dark);
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+ion-item { 
+    --highlight-color-focused: none;
+    --highlight-color-valid: none;
+    --border-width: 0px;
+ }

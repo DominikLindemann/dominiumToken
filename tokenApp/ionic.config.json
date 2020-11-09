@@ -1,0 +1,8 @@
+{
+  "name": "dominiumToken",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

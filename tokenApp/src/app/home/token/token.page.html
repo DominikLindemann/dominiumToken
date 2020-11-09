@@ -1,0 +1,57 @@
+<ion-header >
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dominium Token</ion-title>
+    <ion-buttons slot="end">
+      <ion-button ion-button icon-only (click)="doRefresh()" *ngIf="isLoaded">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid style="height: 100%; display: flex; flex-flow: column;">
+    <ion-row *ngIf="errorGetData">
+      <ion-col>
+        <ion-item color="danger" class="errorItem">
+          <ion-label>Failed to get data.</ion-label>
+          <ion-button color="dark" (click)="onRefresh()">Refresh</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center  *ngIf="isLoaded && !errorGetData">
+      <ion-col><ion-button color="dark" (click)="onReceive()">Receive</ion-button></ion-col>
+      <ion-col><ion-button color="dark" (click)="onSend()">Send</ion-button></ion-col>
+    </ion-row>
+    <ion-row style="flex: 1">
+      <ion-col class="imageCol">
+      </ion-col>
+    </ion-row>
+    <ion-row style="flex: 1" *ngIf="!isLoaded"
+      justify-content-center align-items-center>
+      <ion-col class="balanceToken" text-center>
+        <app-spinner></app-spinner>
+       </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isLoaded && !errorGetData"
+        justify-content-center align-items-center>
+      <ion-col class="balanceToken" text-center>
+       {{token.balanceToken }}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isLoaded && !errorGetData">
+      <ion-col class="tokenymbol"> {{token.tokenSymbol}} </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isLoaded && !errorGetData">
+      <ion-col class="ethbalance"> {{token.balanceEth| number : '1.2-4'}} ETH </ion-col>
+      <ion-col class="ethbalance"> 
+        <span *ngIf="!isLoadedCoingeko">loading...</span>
+        <span *ngIf="isLoadedCoingeko && errorCoingeko">unknown</span>
+        <span *ngIf="isLoadedCoingeko && !errorCoingeko">{{balanceEuro | number : '1.2-2'}}</span> EUR 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

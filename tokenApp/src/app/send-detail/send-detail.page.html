@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Send</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
+          <ion-button expand="full" color="dark" (click)="onScan()">Scan Address &nbsp;
+            <ion-icon name="finger-print-outline"></ion-icon>
+          </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="dark" position="stacked">Address</ion-label>
+          <ion-textarea type="text" placeholder="Address" color="dark" [(ngModel)]="address"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label fixed class="amount" color="dark">Amount</ion-label>
+        <ion-input type="number" color="dark" [(ngModel)]="amount"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-label fixed  color="dark">Gasprice (GWEI): {{gasPriceGwei}}</ion-label>
+          <ion-range color="dark" min="5" max="150" step="5" snaps="true" [(ngModel)]="gasPriceGwei"></ion-range>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="dark" (click)=onSend()>Senden</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="error">
+      <ion-col class="error">
+        {{error}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="txProgress">
+      <ion-col *ngIf="txProgress.txHash" >
+        <div>Tx: 
+          <button mat-icon-button (click)="onCopy()">
+            <ion-icon name="copy-outline"></ion-icon>
+          </button>
+        </div>
+        <a href="{{txLink}}">{{txProgress.txHash}}</a>
+        <div>confirmations: {{txProgress.confirmations}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

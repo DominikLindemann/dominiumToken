@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Disclaimer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment color="dark" [(ngModel)]="segmentList" (ionChange)="onFilterChange($event)">  
+    <ion-segment-button value="impressum" checked><ion-label>Impressum</ion-label></ion-segment-button>
+    <ion-segment-button value="disclaimer"><ion-label>Disclaimer</ion-label></ion-segment-button>
+    <ion-segment-button value="datenschutz"><ion-label>Data protection</ion-label></ion-segment-button>
+  </ion-segment>
+  <ion-grid style="height: 100%; display: flex; flex-flow: column;">
+    <ion-row>
+      <ion-col>
+        <ion-text *ngIf="segmentName === 'impressum'">
+          <br/>
+          Angaben gemäß § 5 TMG:<br/>
+          <br/>
+          <br/>
+          munich consultants<br/>
+          Eine Marke der EDV Dienstleistungen Frankenberger GmbH<br/>
+          Duschlstr. 20a<br/>
+          84347 Pfarrkirchen<br/>
+          <br/>
+          <h2>Vertreten durch:</h2>
+          Alex Frankenberger
+          <br/>
+          <h2>Contact</h2>
+          Telefon: 0160/634 9887<br/>
+          E-Mail: alex@edv-frankenberger.de
+          <br/>
+          <h2>Registereintrag</h2>
+          Eintragung im Handelsregister. <br/>
+          Registergericht:Landshut <br/>
+          Registernummer: HRB 3642
+          <h2>Umsatzsteuer-ID:</h2>
+          <br/>
+          Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br/>
+          DE811633091
+          <br/>
+        </ion-text>
+
+        <ion-text *ngIf="segmentName === 'disclaimer'">
+          <br/>
+          <h1>Disclaimer</h1>
+          <h3>HLiability of content</h3>
+          <br/>
+          As a service provider, we are responsible for the content on these web pages in accordance with general law in accordance with Section 7 (1) of the German Telemedia Act. According to Sections 8 to 10 of the German Telemedia Act, as a service provider, we are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general law remain unaffected. Liability in this regard is only possible from the point in time at which we become aware of a specific legal violation. As soon as we become aware of such legal violations, we will remove this content immediately.
+          <br/>
+          <h3>Liability for links</h3>
+          Our offer contains links to external third party websites, over whose content we have no influence. Therefore, we cannot accept any liability for this external content. The respective provider or operator of these pages is always responsible for the content of the linked pages. The linked pages have been checked for possible legal violations at the time they were linked. No illegal content has been discovered at the time the link was created. Permanent monitoring of the content of the linked pages is not feasible without concrete evidence of a legal violation. If we become aware of any legal violations, we will remove such links immediately.
+          <br/>
+          <h3>Copyright</h3>
+          The content and works on these pages created by the website operator are subject to German copyright law. The duplication, processing, distribution and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this website are only permitted for private, non-commercial use. Since the content on this site was not created by the operator, the copyrights of third parties are observed and contents of third parties are marked as such. Should you nevertheless become aware of a copyright infringement, we would ask you to notify us accordingly. Once we become aware of any legal violations, we will remove such content immediately
+        <br/>
+        </ion-text>
+
+        <ion-text *ngIf="segmentName === 'datenschutz'">
+          <h1>Data protection declaration</h1>
+          <h3>Data protection</h3>
+          Our website can generally be utilized without providing personal data. If personal data (e.g. name, address or email address) is being inquired at some point on our website, such provision is is done, where possible, on a voluntary basis. This information will not be passed on to third parties without previously granted consent.
+          Please note that data transmission on the Internet (e.g. via Email) generally can have security holes. A complete protection of the data against access by third parties is not possible and cannot be guaranteed.
+          We hereby expressly object to the use of the contact data published in the context of the imprint obligation by third parties for unsolicited advertising or sending information material that has not explicitly been requested. The operators of the pages expressly reserve the right to take legal action in the event of unsolicited sending of advertising information, such as spam emails.          
+          <br/>
+          <h3>Data protection declaration for the use of Facebook plugins (Like button)</h3>
+          Our website has integrated plugins of the social network Facebook (Facebook Inc., 1601 Willow Road, Menlo Park, California, 94025, USA). You can recognize the Facebook plugins by the Facebook logo or the "Like" button on our website. You can find an overview of the Facebook plugins here: http://developers.facebook.com/docs/plugins/.
+          When you visit our website, the plug-in creates a direct connection between your browser and the Facebook server. As a result, Facebook receives the information that you (your IP address) have visited our site. If you click the Facebook "Like" button while you are logged into your Facebook account, you can link the content of our pages to your Facebook profile. This enables Facebook to associate your visit on our website to your user account. We would like to point out that, as the provider of the pages, we have no knowledge of the content of the data transmitted to or its use by Facebook. You can find more information on this in the Facebook data protection declaration at https://www.facebook.com/policy.php.
+          If you do not wish for Facebook to be able to associate your visit on our website to your Facebook user account, please log out of your Facebook user account.        
+          <br/>
+          <h3>Data protection declaration for the use of Google Analytics </h3>
+          This website uses Google Analytics, a web analysis service from Google Inc. ("Google"). Google Analytics uses so-called "cookies", text files that are saved on your computer and that enable an analysis of your usage of the content on this website. Such information generated by the cookie is usually transferred to a Google server in the United States of America, where it will be saved. However, if IP anonymization is activated on this website, Google will previously shorten your IP address within member states of the European Union or in other contracting states of the Agreement on the European Economic Area.
+          The full IP address will only be transmitted to a Google server in the USA and shortened there on exceptional basis. On behalf of the operator of this website, Google will use this information to evaluate your use of the website to generate reports on website activity and to provide the website operator with other services relating to website activity and internet usage. The IP address transmitted by your browser as part of Google Analytics will not be compiled with other Google data.
+          You can prevent the storage of cookies by setting your browser software accordingly; however, we would like to point out that in this case you may not be able to use all functions of this website to their full extent. You can also prevent Google from collecting the data generated by the cookie and associating it to your website activity (including your IP address) and from processing this data through Google by downloading the browser plug-in available under the following link and install: https://tools.google.com/dlpage/gaoptout?hl.          
+          <h3>Data protection declaration for the use of Twitter</h3>
+          Twitter functions are integrated on our sites. These functions are offered by Twitter Inc., (Twitter, Inc. 1355 Market St, Suite 900, San Francisco, CA 94103, USA). By using Twitter and the "Retweet" function, the websites you visit are linked to your Twitter account and made known to other users. Therewith data is also being transmitted to Twitter.
+          We would like to point out that, as the provider of the website, we have no knowledge of the content of the data transmitted to or of its use by Twitter. You can find more information on this in Twitter's data protection declaration at 
+          <a href="http://twitter.com/privacy">http://twitter.com/privacy</a>. 
+          You can change your data protection settings on Twitter in the account settings at  <a href="http://twitter.com/account/settings"> http://twitter.com/account/settings></a> ändern.
+          <br/>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

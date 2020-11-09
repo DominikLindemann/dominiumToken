@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Transactions</ion-title>
+    <ion-buttons slot="end">
+      <ion-button ion-button icon-only (click)="doRefresh()" *ngIf="isLoaded">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-spinner *ngIf="!isLoaded"></app-spinner>
+  <div *ngIf="isLoaded && errorMessage == ''">   
+    <ion-item *ngFor="let transaction of transactionList">
+      <app-transaction-item [transaction]="transaction" style="width: 100%;"></app-transaction-item>
+    </ion-item>
+  </div>
+  <div *ngIf="isLoaded && errorMessage !== ''" class="error">
+    {{errorMessage}}
+  </div>
+</ion-content>
